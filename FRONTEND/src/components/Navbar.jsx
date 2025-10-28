@@ -95,19 +95,50 @@ const Navbar = () => {
                     }
                 }
             `}</style>
-            <div className="relative inline-block p-0.5 rounded-full overflow-hidden hover:scale-105 transition duration-300 active:scale-100 before:content-[''] before:absolute before:inset-0 before:bg-[conic-gradient(from_0deg,_#FFFFFF,_#FFFFFF30,_#FFFFFF)] button-wrapper group">
+           <div className="relative inline-block p-0.5 rounded-full overflow-hidden hover:scale-105 transition duration-300 active:scale-100 before:content-[''] before:absolute before:inset-0 before:bg-[conic-gradient(from_0deg,_#FFFFFF,_#FFFFFF30,_#FFFFFF)] button-wrapper group">
                 <button
                     onClick={handleLogout}
                     className="relative z-10 bg-black text-white rounded-full px-8 py-3 font-medium text-sm cursor-pointer"
+                    disabled={Loading} // Disable button while logging out
                 >
-                    <span className="block transition-opacity duration-300 opacity-100 group-hover:opacity-0">
-                        {username}
+                    {/* Default username */}
+                    <span className={`block transition-opacity duration-300 ${Loading ? "opacity-0" : "opacity-100"} group-hover:opacity-0`}>
+                    {username}
                     </span>
-                    <span className="absolute inset-0 flex items-center justify-center transition-opacity duration-300 opacity-0 group-hover:opacity-100">
-                        {Loading?"Logout":"Logging out"}
+
+                    {/* Hover: Logout label */}
+                    <span className={`absolute inset-0 flex items-center justify-center transition-opacity duration-300 ${Loading ? "opacity-0" : "opacity-0 group-hover:opacity-100"}`}>
+                    Logout
                     </span>
+
+                    {/* Loading Spinner */}
+                    {Loading && (
+                    <span className="absolute inset-0 flex items-center justify-center">
+                        <svg
+                        className="animate-spin h-5 w-5 text-white"
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        >
+                        <circle
+                            className="opacity-25"
+                            cx="12"
+                            cy="12"
+                            r="10"
+                            stroke="currentColor"
+                            strokeWidth="4"
+                        ></circle>
+                        <path
+                            className="opacity-75"
+                            fill="currentColor"
+                            d="M4 12a8 8 0 018-8v8H4z"
+                        ></path>
+                        </svg>
+                    </span>
+                    )}
                 </button>
-            </div>
+                </div>
+
 
 
             {/* Mobile Menu Button */}
