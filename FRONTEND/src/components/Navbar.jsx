@@ -104,7 +104,7 @@ const Navbar = () => {
                         {username}
                     </span>
                     <span className="absolute inset-0 flex items-center justify-center transition-opacity duration-300 opacity-0 group-hover:opacity-100">
-                        Logout
+                        {Loading?"Logout":"Logging out"}
                     </span>
                 </button>
             </div>
@@ -130,7 +130,7 @@ const Navbar = () => {
 
 
                 <Link to="/login" className="bg-black text-white px-8 py-2.5 rounded-full transition-all duration-500">
-                    Login
+                    logout
                 </Link>
             </div>
         </nav>
